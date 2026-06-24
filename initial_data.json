@@ -1,0 +1,1727 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$8gJmw80WIDGCAVK3evlXEi$vA4zj1MYnJKWOP6ywRQ5qqa2X9qVoOAnE72qpozgqdQ=",
+    "last_login": "2026-06-08T05:58:02.381Z",
+    "is_superuser": true,
+    "username": "max",
+    "first_name": "",
+    "last_name": "",
+    "email": "max@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-18T06:34:44.272Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "sakir123",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "",
+    "first_name": "",
+    "last_name": "",
+    "email": "vekariyasakir02@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-21T07:28:48.119Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "shahil@gmail.com",
+    "first_name": "shahil harsoliya",
+    "last_name": "",
+    "email": "shahil@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-26T11:48:39.327Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "janak3250private@gmail.com",
+    "first_name": "janaksuthar",
+    "last_name": "",
+    "email": "janak3250private@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-26T12:16:32.554Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "vekariyasakir02@gmail.com",
+    "first_name": "Sakir Vekariya",
+    "last_name": "",
+    "email": "vekariyasakir02@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-26T13:15:15.174Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "shabihaharsoliya@gmail.com",
+    "first_name": "Shabiha Harsoliya",
+    "last_name": "",
+    "email": "shabihaharsoliya@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-27T13:08:22.978Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "abdulrehman@gmail.com",
+    "first_name": "abdulrehman",
+    "last_name": "",
+    "email": "abdulrehman@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-06-08T05:37:54.175Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 1,
+  "fields": {
+    "name": "Sakir Vekariya",
+    "email": "vekariyasakir02@gmail.com",
+    "password": "sakir123",
+    "address": "Madina Masjid Road,Pologround",
+    "contact": "09316250854"
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 3,
+  "fields": {
+    "name": "shahil harsoliya",
+    "email": "shahil@gmail.com",
+    "password": "shahil123",
+    "address": "Madina Masjid Road,HMT",
+    "contact": "7990468789"
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 5,
+  "fields": {
+    "name": "zuber ibji",
+    "email": "zuber@gmail.com",
+    "password": "zuber123",
+    "address": "Mohlat,HMT",
+    "contact": "7894561230"
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 6,
+  "fields": {
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "password": "123456",
+    "address": "Himmatnagar",
+    "contact": "9090909090"
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 8,
+  "fields": {
+    "name": "javid husain",
+    "email": "javid@gmail.com",
+    "password": "123456",
+    "address": "Hmt",
+    "contact": "7567616827"
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 9,
+  "fields": {
+    "name": "noor",
+    "email": "max@gmail.com",
+    "password": "defaultpassword123",
+    "address": "Gujarat",
+    "contact": "7845961232"
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 10,
+  "fields": {
+    "name": "Shabiha Harsoliya",
+    "email": "shabihaharsoliya@gmail.com",
+    "password": "123456",
+    "address": "Jivan Manjil,Madina Masjid Road,Pologround",
+    "contact": "6353824374"
+  }
+},
+{
+  "model": "main.customer",
+  "pk": 11,
+  "fields": {
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "password": "123456",
+    "address": "Near MHK Mall,HMT",
+    "contact": "7894561230"
+  }
+},
+{
+  "model": "main.product",
+  "pk": 16,
+  "fields": {
+    "name": "samsung s26 ultra",
+    "price": 189000.0,
+    "description": "The Samsung Galaxy S26 Ultra is a flagship smartphone featuring a 6.9-inch Dynamic AMOLED 2X display, Snapdragon 8 Elite Gen 5 processor, 200MP quad-camera system, 5000mAh battery, and advanced AI and privacy features.",
+    "image": "image/upload/product/s26.webp",
+    "stock": 5,
+    "category": "Mobiles",
+    "discount_percentage": 5.0
+  }
+},
+{
+  "model": "main.product",
+  "pk": 18,
+  "fields": {
+    "name": "Wedsite Page",
+    "price": 100.0,
+    "description": "An About page is a key section of a website that tells your brand’s story, introduces your team, and builds trust with visitors.",
+    "image": "image/upload/product/DemoAnimate.avi_snapshot_00.11.343.jpg",
+    "stock": 2,
+    "category": "Laptops",
+    "discount_percentage": 2.0
+  }
+},
+{
+  "model": "main.product",
+  "pk": 19,
+  "fields": {
+    "name": "Cricket Bat",
+    "price": 5000.0,
+    "description": "A cricket bat is a specialized wooden bat used by batters to hit the ball, traditionally made from willow with a cane handle, and designed for optimal control, power, and durability.",
+    "image": "image/upload/product/bat_oGPsUuh.webp",
+    "stock": 11,
+    "category": "Sports",
+    "discount_percentage": 5.0
+  }
+},
+{
+  "model": "main.product",
+  "pk": 20,
+  "fields": {
+    "name": "Toy Story",
+    "price": 50000.0,
+    "description": "A toy is an object designed primarily for play, entertainment, learning, or collecting, used by children, adults, and even pets.",
+    "image": "image/upload/product/OIP.webp",
+    "stock": 6,
+    "category": "Toys",
+    "discount_percentage": 10.0
+  }
+},
+{
+  "model": "main.product",
+  "pk": 21,
+  "fields": {
+    "name": "Casio Watch",
+    "price": 15000.0,
+    "description": "Casio watches are renowned for their durability, affordability, and innovative designs, making them a staple in the global watch market.History and Origins Casio was founded in 1946 in Japan by Tadao and Toshio Kashio as Kashio Seisakujo, initially producing a variety of electronic products before entering the watch industry in 1974 with the Casiotron, the first digital watch featuring an automatic calendar function . Over the years, Casio introduced groundbreaking models such as the F-100 in 1977, the G-Shock in 1983, and the F-91W in 1989, which remains one of the best-selling watches.",
+    "image": "image/upload/product/watch1.webp",
+    "stock": 9,
+    "category": "Watches",
+    "discount_percentage": 5.0
+  }
+},
+{
+  "model": "main.product",
+  "pk": 22,
+  "fields": {
+    "name": "Cartier",
+    "price": 1913600.0,
+    "description": "Cartier watches range from approximately $3,300 for entry-level models to over $200,000 for high-jewelry or grand complication pieces, with pre-owned options starting around $2,200.",
+    "image": "image/upload/product/cartier.webp",
+    "stock": 9,
+    "category": "Watches",
+    "discount_percentage": 25.0
+  }
+},
+{
+  "model": "main.product",
+  "pk": 23,
+  "fields": {
+    "name": "Samsung MNA114MS1CXXL",
+    "price": 249000.0,
+    "description": "Samsung offers a wide range of TV models, including QLED, LED, and Smart TVs, featuring various screen sizes and advanced technologies for an enhanced viewing experience.",
+    "image": "image/upload/product/samsung.webp",
+    "stock": 5,
+    "category": "Electronics",
+    "discount_percentage": 10.0
+  }
+},
+{
+  "model": "main.cart",
+  "pk": 40,
+  "fields": {
+    "quantity": 1,
+    "created_at": "2026-05-26T11:46:42.298Z",
+    "product": 16,
+    "user": 3
+  }
+},
+{
+  "model": "main.cart",
+  "pk": 60,
+  "fields": {
+    "quantity": 4,
+    "created_at": "2026-06-09T06:21:16.248Z",
+    "product": 19,
+    "user": 11
+  }
+},
+{
+  "model": "main.order",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "j",
+    "email": "j@gmail.com",
+    "phone": "4654652",
+    "address": "lkjljkljkljl",
+    "total_amount": 109881,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-21T06:51:38.711Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "j",
+    "email": "j@gmail.com",
+    "phone": "4654652",
+    "address": "lkjljkljkljl",
+    "total_amount": 0,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-21T06:51:42.895Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "noor",
+    "email": "noor@gmail.com",
+    "phone": "7845961232",
+    "address": "Gujarat",
+    "total_amount": 125000,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-25T06:08:10.876Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "noor",
+    "email": "noor@gmail.com",
+    "phone": "7845961232",
+    "address": "Gujarat",
+    "total_amount": 125000,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-25T06:09:23.799Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "noor",
+    "email": "noor@gmail.com",
+    "phone": "7845961232",
+    "address": "Gujarat",
+    "total_amount": 125000,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-05-25T06:13:30.094Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "noor",
+    "email": "noor@gmail.com",
+    "phone": "7845961232",
+    "address": "Gujarat",
+    "total_amount": 125000,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-05-25T06:27:37.300Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "noor",
+    "email": "noor@gmail.com",
+    "phone": "7845961232",
+    "address": "Gujarat",
+    "total_amount": 50000,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-25T06:41:14.266Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himatnagar",
+    "total_amount": 209881,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-25T06:44:16.045Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himatnagar",
+    "total_amount": 100,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-05-25T07:46:57.613Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 378300,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-25T07:53:50.715Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "max"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 378300,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-05-25T07:54:05.238Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "shahil@gmail.com"
+    ],
+    "name": "shahil harsoliya",
+    "email": "shahil@gmail.com",
+    "phone": "7990468789",
+    "address": "Madina Masjid Road,HMT",
+    "total_amount": 189000,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-26T11:48:39.345Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 378100,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-26T12:16:32.569Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 378100,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-05-26T12:18:12.715Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "vekariyasakir02@gmail.com"
+    ],
+    "name": "Sakir Vekariya",
+    "email": "vekariyasakir02@gmail.com",
+    "phone": "09316250854",
+    "address": "Madina Masjid Road,Pologround",
+    "total_amount": 50000,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-05-26T13:15:15.189Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 16,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 1913600,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-05-26T13:39:42.030Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 17,
+  "fields": {
+    "user": [
+      "shabihaharsoliya@gmail.com"
+    ],
+    "name": "Shabiha Harsoliya",
+    "email": "shabihaharsoliya@gmail.com",
+    "phone": "6353824374",
+    "address": "Jivan Manjil,Madina Masjid Road,Pologround",
+    "total_amount": 1913600,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-05-27T13:08:22.988Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 18,
+  "fields": {
+    "user": [
+      "shabihaharsoliya@gmail.com"
+    ],
+    "name": "Shabiha Harsoliya",
+    "email": "shabihaharsoliya@gmail.com",
+    "phone": "6353824374",
+    "address": "Jivan Manjil,Madina Masjid Road,Pologround",
+    "total_amount": 3477220,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-01T02:46:50.894Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 19,
+  "fields": {
+    "user": [
+      "shabihaharsoliya@gmail.com"
+    ],
+    "name": "Shabiha Harsoliya",
+    "email": "shabihaharsoliya@gmail.com",
+    "phone": "6353824374",
+    "address": "Jivan Manjil,Madina Masjid Road,Pologround",
+    "total_amount": 14250,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-01T02:56:57.639Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 20,
+  "fields": {
+    "user": [
+      "shabihaharsoliya@gmail.com"
+    ],
+    "name": "Shabiha Harsoliya",
+    "email": "shabihaharsoliya@gmail.com",
+    "phone": "6353824374",
+    "address": "Jivan Manjil,Madina Masjid Road,Pologround",
+    "total_amount": 28500,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-01T02:57:28.777Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 21,
+  "fields": {
+    "user": [
+      "shabihaharsoliya@gmail.com"
+    ],
+    "name": "Shabiha Harsoliya",
+    "email": "shabihaharsoliya@gmail.com",
+    "phone": "6353824374",
+    "address": "Jivan Manjil,Madina Masjid Road,Pologround",
+    "total_amount": 14250,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-01T03:04:44.565Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 22,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 224100,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-01T03:19:45.607Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 23,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 196,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-01T03:25:12.141Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 24,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 4750,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-01T03:28:09.470Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 25,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 4750,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-01T03:28:20.794Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 26,
+  "fields": {
+    "user": [
+      "janak3250private@gmail.com"
+    ],
+    "name": "janaksuthar",
+    "email": "janak3250private@gmail.com",
+    "phone": "9090909090",
+    "address": "Himmatnagar",
+    "total_amount": 4750,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-01T03:31:40.724Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 27,
+  "fields": {
+    "user": [
+      "vekariyasakir02@gmail.com"
+    ],
+    "name": "Sakir Vekariya",
+    "email": "vekariyasakir02@gmail.com",
+    "phone": "09316250854",
+    "address": "Madina Masjid Road,Pologround",
+    "total_amount": 4750,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-01T03:43:04.975Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 28,
+  "fields": {
+    "user": [
+      "vekariyasakir02@gmail.com"
+    ],
+    "name": "Sakir Vekariya",
+    "email": "vekariyasakir02@gmail.com",
+    "phone": "09316250854",
+    "address": "Madina Masjid Road,Pologround",
+    "total_amount": 179550,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-01T03:57:52.311Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 29,
+  "fields": {
+    "user": [
+      "vekariyasakir02@gmail.com"
+    ],
+    "name": "Sakir Vekariya",
+    "email": "vekariyasakir02@gmail.com",
+    "phone": "09316250854",
+    "address": "Madina Masjid Road,Pologround",
+    "total_amount": 98,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-01T03:59:14.977Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 30,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 189050,
+    "payment_method": "COD",
+    "payment_status": "Completed",
+    "order_status": "Accepted",
+    "created_at": "2026-06-08T05:37:54.187Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 31,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 233600,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T04:26:49.033Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 32,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 233600,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T04:31:06.129Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 33,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 233600,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T04:34:45.712Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 34,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 233600,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T04:42:23.861Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 35,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 233600,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T05:56:36.895Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 36,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 672300,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T06:05:33.340Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 37,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 19000,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T06:29:15.048Z"
+  }
+},
+{
+  "model": "main.order",
+  "pk": 38,
+  "fields": {
+    "user": [
+      "abdulrehman@gmail.com"
+    ],
+    "name": "abdulrehman",
+    "email": "abdulrehman@gmail.com",
+    "phone": "7894561230",
+    "address": "Near MHK Mall,HMT",
+    "total_amount": 19000,
+    "payment_method": "COD",
+    "payment_status": "Pending",
+    "order_status": "Pending",
+    "created_at": "2026-06-09T06:58:56.305Z"
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 13,
+  "fields": {
+    "order": 9,
+    "product": 18,
+    "quantity": 1,
+    "price": 100,
+    "subtotal": 100,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 14,
+  "fields": {
+    "order": 10,
+    "product": 18,
+    "quantity": 3,
+    "price": 100,
+    "subtotal": 300,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 15,
+  "fields": {
+    "order": 10,
+    "product": 16,
+    "quantity": 2,
+    "price": 189000,
+    "subtotal": 378000,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 16,
+  "fields": {
+    "order": 11,
+    "product": 18,
+    "quantity": 3,
+    "price": 100,
+    "subtotal": 300,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 17,
+  "fields": {
+    "order": 11,
+    "product": 16,
+    "quantity": 2,
+    "price": 189000,
+    "subtotal": 378000,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 18,
+  "fields": {
+    "order": 12,
+    "product": 16,
+    "quantity": 1,
+    "price": 189000,
+    "subtotal": 189000,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 19,
+  "fields": {
+    "order": 13,
+    "product": 18,
+    "quantity": 1,
+    "price": 100,
+    "subtotal": 100,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 20,
+  "fields": {
+    "order": 13,
+    "product": 16,
+    "quantity": 2,
+    "price": 189000,
+    "subtotal": 378000,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 21,
+  "fields": {
+    "order": 14,
+    "product": 18,
+    "quantity": 1,
+    "price": 100,
+    "subtotal": 100,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 22,
+  "fields": {
+    "order": 14,
+    "product": 16,
+    "quantity": 2,
+    "price": 189000,
+    "subtotal": 378000,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 23,
+  "fields": {
+    "order": 15,
+    "product": 20,
+    "quantity": 1,
+    "price": 50000,
+    "subtotal": 50000,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 24,
+  "fields": {
+    "order": 16,
+    "product": 22,
+    "quantity": 1,
+    "price": 1913600,
+    "subtotal": 1913600,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 25,
+  "fields": {
+    "order": 17,
+    "product": 22,
+    "quantity": 1,
+    "price": 1913600,
+    "subtotal": 1913600,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 26,
+  "fields": {
+    "order": 18,
+    "product": 22,
+    "quantity": 2,
+    "price": 1913600,
+    "subtotal": 3253120,
+    "discount_percentage": 15.0,
+    "discount_amount": 574080.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 27,
+  "fields": {
+    "order": 18,
+    "product": 23,
+    "quantity": 1,
+    "price": 249000,
+    "subtotal": 224100,
+    "discount_percentage": 10.0,
+    "discount_amount": 24900.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 28,
+  "fields": {
+    "order": 19,
+    "product": 21,
+    "quantity": 1,
+    "price": 15000,
+    "subtotal": 14250,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 29,
+  "fields": {
+    "order": 20,
+    "product": 21,
+    "quantity": 2,
+    "price": 15000,
+    "subtotal": 28500,
+    "discount_percentage": 0.0,
+    "discount_amount": 0.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 30,
+  "fields": {
+    "order": 21,
+    "product": 21,
+    "quantity": 1,
+    "price": 15000,
+    "subtotal": 14250,
+    "discount_percentage": 5.0,
+    "discount_amount": 750.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 31,
+  "fields": {
+    "order": 22,
+    "product": 23,
+    "quantity": 1,
+    "price": 249000,
+    "subtotal": 224100,
+    "discount_percentage": 10.0,
+    "discount_amount": 24900.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 32,
+  "fields": {
+    "order": 23,
+    "product": 18,
+    "quantity": 2,
+    "price": 100,
+    "subtotal": 196,
+    "discount_percentage": 2.0,
+    "discount_amount": 4.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 33,
+  "fields": {
+    "order": 24,
+    "product": 19,
+    "quantity": 1,
+    "price": 5000,
+    "subtotal": 4750,
+    "discount_percentage": 5.0,
+    "discount_amount": 250.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 34,
+  "fields": {
+    "order": 25,
+    "product": 19,
+    "quantity": 1,
+    "price": 5000,
+    "subtotal": 4750,
+    "discount_percentage": 5.0,
+    "discount_amount": 250.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 35,
+  "fields": {
+    "order": 26,
+    "product": 19,
+    "quantity": 1,
+    "price": 5000,
+    "subtotal": 4750,
+    "discount_percentage": 5.0,
+    "discount_amount": 250.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 36,
+  "fields": {
+    "order": 27,
+    "product": 19,
+    "quantity": 1,
+    "price": 5000,
+    "subtotal": 4750,
+    "discount_percentage": 5.0,
+    "discount_amount": 250.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 37,
+  "fields": {
+    "order": 28,
+    "product": 16,
+    "quantity": 1,
+    "price": 189000,
+    "subtotal": 179550,
+    "discount_percentage": 5.0,
+    "discount_amount": 9450.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 38,
+  "fields": {
+    "order": 29,
+    "product": 18,
+    "quantity": 1,
+    "price": 100,
+    "subtotal": 98,
+    "discount_percentage": 2.0,
+    "discount_amount": 2.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 39,
+  "fields": {
+    "order": 30,
+    "product": 16,
+    "quantity": 1,
+    "price": 189000,
+    "subtotal": 179550,
+    "discount_percentage": 5.0,
+    "discount_amount": 9450.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 40,
+  "fields": {
+    "order": 30,
+    "product": 19,
+    "quantity": 2,
+    "price": 5000,
+    "subtotal": 9500,
+    "discount_percentage": 5.0,
+    "discount_amount": 500.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 41,
+  "fields": {
+    "order": 31,
+    "product": 23,
+    "quantity": 1,
+    "price": 249000,
+    "subtotal": 224100,
+    "discount_percentage": 10.0,
+    "discount_amount": 24900.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 42,
+  "fields": {
+    "order": 31,
+    "product": 19,
+    "quantity": 2,
+    "price": 5000,
+    "subtotal": 9500,
+    "discount_percentage": 5.0,
+    "discount_amount": 500.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 43,
+  "fields": {
+    "order": 32,
+    "product": 23,
+    "quantity": 1,
+    "price": 249000,
+    "subtotal": 224100,
+    "discount_percentage": 10.0,
+    "discount_amount": 24900.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 44,
+  "fields": {
+    "order": 32,
+    "product": 19,
+    "quantity": 2,
+    "price": 5000,
+    "subtotal": 9500,
+    "discount_percentage": 5.0,
+    "discount_amount": 500.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 45,
+  "fields": {
+    "order": 33,
+    "product": 23,
+    "quantity": 1,
+    "price": 249000,
+    "subtotal": 224100,
+    "discount_percentage": 10.0,
+    "discount_amount": 24900.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 46,
+  "fields": {
+    "order": 33,
+    "product": 19,
+    "quantity": 2,
+    "price": 5000,
+    "subtotal": 9500,
+    "discount_percentage": 5.0,
+    "discount_amount": 500.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 47,
+  "fields": {
+    "order": 34,
+    "product": 23,
+    "quantity": 1,
+    "price": 249000,
+    "subtotal": 224100,
+    "discount_percentage": 10.0,
+    "discount_amount": 24900.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 48,
+  "fields": {
+    "order": 34,
+    "product": 19,
+    "quantity": 2,
+    "price": 5000,
+    "subtotal": 9500,
+    "discount_percentage": 5.0,
+    "discount_amount": 500.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 49,
+  "fields": {
+    "order": 35,
+    "product": 23,
+    "quantity": 1,
+    "price": 249000,
+    "subtotal": 224100,
+    "discount_percentage": 10.0,
+    "discount_amount": 24900.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 50,
+  "fields": {
+    "order": 35,
+    "product": 19,
+    "quantity": 2,
+    "price": 5000,
+    "subtotal": 9500,
+    "discount_percentage": 5.0,
+    "discount_amount": 500.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 51,
+  "fields": {
+    "order": 36,
+    "product": 23,
+    "quantity": 3,
+    "price": 249000,
+    "subtotal": 672300,
+    "discount_percentage": 10.0,
+    "discount_amount": 74700.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 52,
+  "fields": {
+    "order": 37,
+    "product": 19,
+    "quantity": 4,
+    "price": 5000,
+    "subtotal": 19000,
+    "discount_percentage": 5.0,
+    "discount_amount": 1000.0
+  }
+},
+{
+  "model": "main.orderitem",
+  "pk": 53,
+  "fields": {
+    "order": 38,
+    "product": 19,
+    "quantity": 4,
+    "price": 5000,
+    "subtotal": 19000,
+    "discount_percentage": 5.0,
+    "discount_amount": 1000.0
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 1,
+  "fields": {
+    "order": 5,
+    "payment_id": "PAY-5-TXT",
+    "payment_method": "COD",
+    "amount": 125000,
+    "status": "Completed",
+    "created_at": "2026-05-25T06:13:53.910Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 2,
+  "fields": {
+    "order": 6,
+    "payment_id": "PAY-6-TXT",
+    "payment_method": "COD",
+    "amount": 125000,
+    "status": "Completed",
+    "created_at": "2026-05-25T06:34:03.535Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 3,
+  "fields": {
+    "order": 9,
+    "payment_id": "PAY-9-TXT",
+    "payment_method": "COD",
+    "amount": 100,
+    "status": "Completed",
+    "created_at": "2026-05-25T07:47:05.335Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 4,
+  "fields": {
+    "order": 11,
+    "payment_id": "PAY-11-TXT",
+    "payment_method": "Credit Card",
+    "amount": 378300,
+    "status": "Completed",
+    "created_at": "2026-05-25T07:54:12.642Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 5,
+  "fields": {
+    "order": 14,
+    "payment_id": "PAY-14-TXT",
+    "payment_method": "Credit Card",
+    "amount": 378100,
+    "status": "Completed",
+    "created_at": "2026-05-26T12:20:23.246Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 6,
+  "fields": {
+    "order": 15,
+    "payment_id": "PAY-15-TXT",
+    "payment_method": "PayPal",
+    "amount": 50000,
+    "status": "Completed",
+    "created_at": "2026-05-26T13:15:29.080Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 7,
+  "fields": {
+    "order": 16,
+    "payment_id": "PAY-16-TXT",
+    "payment_method": "COD",
+    "amount": 1913600,
+    "status": "Completed",
+    "created_at": "2026-05-26T13:39:48.498Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 8,
+  "fields": {
+    "order": 21,
+    "payment_id": "PAY-21-TXT",
+    "payment_method": "PayPal",
+    "amount": 14250,
+    "status": "Completed",
+    "created_at": "2026-06-01T03:05:01.336Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 9,
+  "fields": {
+    "order": 22,
+    "payment_id": "PAY-22-TXT",
+    "payment_method": "PayPal",
+    "amount": 224100,
+    "status": "Completed",
+    "created_at": "2026-06-01T03:19:52.819Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 10,
+  "fields": {
+    "order": 23,
+    "payment_id": "PAY-23-TXT",
+    "payment_method": "PayPal",
+    "amount": 196,
+    "status": "Completed",
+    "created_at": "2026-06-01T03:25:17.632Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 11,
+  "fields": {
+    "order": 26,
+    "payment_id": "PAY-26-TXT",
+    "payment_method": "Credit Card",
+    "amount": 4750,
+    "status": "Completed",
+    "created_at": "2026-06-01T03:31:45.344Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 12,
+  "fields": {
+    "order": 27,
+    "payment_id": "PAY-27-TXT",
+    "payment_method": "PayPal",
+    "amount": 4750,
+    "status": "Completed",
+    "created_at": "2026-06-01T03:44:26.100Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 13,
+  "fields": {
+    "order": 28,
+    "payment_id": "PAY-28-TXT",
+    "payment_method": "Credit Card",
+    "amount": 179550,
+    "status": "Completed",
+    "created_at": "2026-06-01T03:58:47.977Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 14,
+  "fields": {
+    "order": 29,
+    "payment_id": "PAY-29-TXT",
+    "payment_method": "PayPal",
+    "amount": 98,
+    "status": "Completed",
+    "created_at": "2026-06-01T03:59:21.908Z"
+  }
+},
+{
+  "model": "main.payment",
+  "pk": 15,
+  "fields": {
+    "order": 30,
+    "payment_id": "PAY-30-TXT",
+    "payment_method": "COD",
+    "amount": 189050,
+    "status": "Completed",
+    "created_at": "2026-06-08T05:38:21.195Z"
+  }
+},
+{
+  "model": "main.contact",
+  "pk": 1,
+  "fields": {
+    "name": "javid husain",
+    "email": "javid@gmail.com",
+    "subject": "Product",
+    "message": "I want to Sell My Product to Your Websites"
+  }
+}
+]
