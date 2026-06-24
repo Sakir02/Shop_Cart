@@ -53,10 +53,20 @@ class Product(models.Model):
     
     @property
     def image_url(self):
-        """Safely return image URL with a placeholder fallback."""
+        """Safely return image URL with static file or placeholder fallback."""
+        # Try Cloudinary first
         try:
             if self.image:
                 return self.image.url
+        except Exception:
+            pass
+        # Try serving from static files (local product images in media/product/)
+        try:
+            from django.contrib.staticfiles.storage import staticfiles_storage
+            if self.image and self.image.name:
+                path = staticfiles_storage.url(self.image.name)
+                if path:
+                    return path
         except Exception:
             pass
         return PLACEHOLDER_IMAGE

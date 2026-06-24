@@ -97,6 +97,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(str(BASE_DIR), 'staticfiles')
 
+# Include media directory so local product images are collected by collectstatic
+# (keeps subdirectory structure like product/ matching Cloudinary public_ids)
+STATICFILES_DIRS = [
+    os.path.join(str(BASE_DIR), 'media'),
+]
+
 # Cloudinary configuration for media files
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'placeholder'),
