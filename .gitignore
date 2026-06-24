@@ -40,3 +40,5 @@ env/
 
 # Project specific
 */migrations/*.pyc
+
+.vercel

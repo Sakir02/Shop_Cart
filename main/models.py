@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+# Placeholder image URL used when Cloudinary is not configured
+PLACEHOLDER_IMAGE = "https://placehold.co/400x400/e2e8f0/64748b?text=No+Image"
+
 class Customer(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
@@ -48,6 +51,16 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+    @property
+    def image_url(self):
+        """Safely return image URL with a placeholder fallback."""
+        try:
+            if self.image:
+                return self.image.url
+        except Exception:
+            pass
+        return PLACEHOLDER_IMAGE
+
     @property
     def discounted_price(self):
         """Calculate price after discount"""

@@ -99,7 +99,7 @@ STATIC_ROOT = os.path.join(str(BASE_DIR), 'staticfiles')
 
 # Cloudinary configuration for media files
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', ''),
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'placeholder'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY', ''),
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', ''),
 }

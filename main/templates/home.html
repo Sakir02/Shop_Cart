@@ -173,7 +173,7 @@
                             <span class="discount-badge">{{ most_selling_product.discount_percentage|floatformat:0 }}% OFF</span>
                             {% endif %}
                         </div>
-                        <img src="{{ most_selling_product.image.url }}"
+                        <img src="{{ most_selling_product.image_url }}"
                             class="hero-product-image my-3"
                             alt="{{ most_selling_product.name }}">
                         <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
@@ -253,7 +253,7 @@
                 <div class="col-xl-4 col-md-6">
                     <article class="content-card product-card overflow-hidden">
                         <a href="{% url 'product_detail' i.id %}" class="product-media">
-                            <img src="{{ i.image.url }}" alt="{{ i.name }}">
+                            <img src="{{ i.image_url }}" alt="{{ i.name }}">
                         </a>
                         <div class="p-4">
                             <div class="d-flex flex-wrap gap-2">
