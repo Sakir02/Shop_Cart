@@ -1,0 +1,27 @@
+from .admin_views import (
+    admin_customers,
+    admin_home,
+    delete_customer,
+    edit_customer,
+    admin_contact,
+)
+from .customer_views import (
+    about,
+    category,
+    contact,
+    home,
+    login,
+    logout,
+    product,
+    product_detail,
+    register,
+    addtocart,
+    cart,
+    remove_from_cart,
+    delete_cart_item,
+    checkout,
+    success,
+    payment,
+    myorder,
+    contact,
+)

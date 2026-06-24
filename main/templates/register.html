@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Register - ShopSphere{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-section {
+        padding: 70px 0;
+    }
+
+    .register-aside {
+        background:
+            linear-gradient(90deg, rgba(17, 24, 39, 0.94), rgba(15, 118, 110, 0.82)),
+            url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071')
+            center/cover no-repeat;
+        color: white;
+        min-height: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <section class="auth-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="content-card overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-lg-5 d-none d-lg-block">
+                                <div class="register-aside p-5">
+                                    <span class="section-label text-white">Join ShopSphere</span>
+                                    <h1 class="fw-bold mt-3">Create Your Shopping Account</h1>
+                                    <p class="text-light mt-3">
+                                        Register once and browse premium products with a cleaner,
+                                        faster ecommerce experience.
+                                    </p>
+                                    <div class="mt-5">
+                                        <p class="fw-semibold"><i class="fa-solid fa-check me-2"></i>Fast delivery</p>
+                                        <p class="fw-semibold"><i class="fa-solid fa-check me-2"></i>Secure payments</p>
+                                        <p class="fw-semibold mb-0"><i class="fa-solid fa-check me-2"></i>Human support</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-7">
+                                <div class="p-4 p-lg-5">
+                                    <div class="mb-4">
+                                        <span class="section-label">Account</span>
+                                        <h2 class="fw-bold mt-2">Create Account</h2>
+                                        <p class="text-muted mb-0">Register your account below.</p>
+                                    </div>
+
+                                    {% if error %}
+                                    <div class="alert alert-danger">
+                                        {{ error }}
+                                    </div>
+                                    {% endif %}
+
+                                    {% if errors %}
+                                    <div class="alert alert-danger">
+                                        {% for error in errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+
+                                    <form method="POST">
+                                        {% csrf_token %}
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">Full Name</label>
+                                                <input type="text"
+                                                    class="form-control"
+                                                    name="name"
+                                                    placeholder="Enter full name">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">Email Address</label>
+                                                <input type="email"
+                                                    class="form-control"
+                                                    name="email"
+                                                    placeholder="Enter email">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">Password</label>
+                                                <input type="password"
+                                                    class="form-control"
+                                                    name="password"
+                                                    placeholder="Enter password">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-semibold">Confirm Password</label>
+                                                <input type="password"
+                                                    class="form-control"
+                                                    name="confirm_password"
+                                                    placeholder="Confirm password">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label fw-semibold">Phone Number</label>
+                                            <input type="text"
+                                                class="form-control"
+                                                name="phone"
+                                                placeholder="Enter phone number">
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="form-label fw-semibold">Address</label>
+                                            <textarea class="form-control"
+                                                rows="4"
+                                                name="address"
+                                                placeholder="Enter your address"></textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-brand btn-lg w-100">
+                                            Register Account
+                                        </button>
+                                    </form>
+
+                                    <p class="text-center text-muted mt-4 mb-0">
+                                        Already have an account?
+                                        <a href="/login/" class="fw-bold text-decoration-none">Login</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

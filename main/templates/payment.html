@@ -1,0 +1,386 @@
+{% extends 'base.html' %}
+
+{% block title %}Secure Payment - Veloza Mart{% endblock %}
+
+{% block extra_css %}
+<style>
+    .payment-hero {
+        --hero-image: url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=2070');
+        min-height: 300px;
+    }
+
+    .checkout-stepper {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+        margin-top: -34px;
+        padding: 16px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .checkout-step {
+        align-items: center;
+        color: var(--muted);
+        display: flex;
+        font-weight: 800;
+        gap: 10px;
+    }
+
+    .checkout-step span {
+        align-items: center;
+        background: #e5e7eb;
+        border-radius: 50%;
+        color: var(--muted);
+        display: inline-flex;
+        height: 34px;
+        justify-content: center;
+        width: 34px;
+    }
+
+    .checkout-step.active {
+        color: var(--brand);
+    }
+
+    .checkout-step.active span {
+        background: #ccfbf1;
+        color: var(--brand);
+    }
+
+    .payment-option {
+        align-items: flex-start;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        gap: 14px;
+        padding: 16px;
+        transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .payment-option:hover {
+        background: #f8fafc;
+        border-color: rgba(15, 118, 110, 0.42);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .payment-option input:checked {
+        background-color: var(--brand);
+        border-color: var(--brand);
+    }
+
+    .payment-method-icon {
+        align-items: center;
+        background: #eef2f7;
+        border-radius: 8px;
+        display: inline-flex;
+        flex: 0 0 44px;
+        height: 44px;
+        justify-content: center;
+        width: 44px;
+    }
+
+    .payment-thumb {
+        background: #eef2f7;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        height: 58px;
+        object-fit: contain;
+        padding: 6px;
+        width: 58px;
+    }
+
+    .summary-panel {
+        background: #0f172a;
+        border-radius: 8px;
+        color: white;
+        overflow: hidden;
+    }
+
+    .summary-panel .summary-row {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+    }
+
+    .summary-panel .summary-total {
+        background: rgba(15, 118, 110, 0.22);
+        margin: 18px -24px -24px;
+        padding: 20px 24px;
+    }
+
+    .payment-sidebar {
+        position: sticky;
+        top: 96px;
+    }
+
+    .secure-strip {
+        background: #f8fafc;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+    }
+
+    @media(max-width: 991px) {
+        .payment-sidebar {
+            position: static;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero payment-hero">
+    <div class="container">
+        <span class="section-label text-white">Secure Checkout</span>
+        <h1 class="mt-3 mb-3">Complete Your Payment</h1>
+        <p class="mb-0">Confirm your order, choose a payment method, and finish checkout with confidence.</p>
+    </div>
+</section>
+
+<main>
+    <div class="container">
+        <div class="checkout-stepper">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="checkout-step active"><span>1</span>Cart Review</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="checkout-step active"><span>2</span>Delivery Details</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="checkout-step active"><span>3</span>Secure Payment</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container py-5">
+        {% if order %}
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-8">
+                <div class="content-card p-4 mb-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+                        <div>
+                            <span class="section-label">Order #{{ order.id }}</span>
+                            <h3 class="fw-bold mt-2 mb-0">Order Summary</h3>
+                        </div>
+                        <span class="status-pill bg-light text-success border">
+                            <i class="fa-solid fa-shield-halved me-2"></i>Protected Checkout
+                        </span>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th class="text-end">Price</th>
+                                    <th class="text-end">Discount</th>
+                                    <th class="text-center">Qty</th>
+                                    <th class="text-end">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in order_items %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            {% if item.product.image %}
+                                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="payment-thumb">
+                                            {% endif %}
+                                            <div>
+                                                <strong>{{ item.product.name }}</strong>
+                                                <div class="small text-muted">{{ item.product.category }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">
+                                        {% if item.effective_discount_percentage > 0 %}
+                                            <div class="text-muted text-decoration-line-through">&#8377;{{ item.price|floatformat:0 }}</div>
+                                            <div class="fw-semibold text-success">
+                                                &#8377;{{ item.discounted_unit_price|floatformat:0 }}
+                                            </div>
+                                        {% else %}
+                                            <span class="fw-semibold">&#8377;{{ item.price|floatformat:0 }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        {% if item.effective_discount_percentage > 0 %}
+                                            <div class="text-success fw-semibold">{{ item.effective_discount_percentage|floatformat:0 }}% OFF</div>
+                                            <div class="small text-muted">Saved &#8377;{{ item.effective_discount_amount|floatformat:0 }}</div>
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center fw-semibold">{{ item.quantity }}</td>
+                                    <td class="text-end fw-bold">&#8377;{{ item.subtotal|floatformat:0 }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">Order records generated successfully.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content-card p-4 mb-4">
+                    <h3 class="fw-bold mb-3">Delivery Information</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="secure-strip p-3 h-100">
+                                <div class="text-muted small">Customer</div>
+                                <div class="fw-bold">{{ order.name }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="secure-strip p-3 h-100">
+                                <div class="text-muted small">Email</div>
+                                <div class="fw-bold">{{ order.email }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="secure-strip p-3 h-100">
+                                <div class="text-muted small">Phone</div>
+                                <div class="fw-bold">{{ order.phone }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="secure-strip p-3 h-100">
+                                <div class="text-muted small">Address</div>
+                                <div class="fw-bold">{{ order.address }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secure-strip p-3">
+                    <div class="row g-3 text-center">
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-lock text-success me-2"></i>
+                            <strong>Secure Payment</strong>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-truck-fast text-success me-2"></i>
+                            <strong>Fast Dispatch</strong>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-headset text-success me-2"></i>
+                            <strong>Support Ready</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <aside class="payment-sidebar">
+                    <div class="content-card p-4 mb-4">
+                        <h3 class="fw-bold mb-3">Choose Payment</h3>
+                        <form method="post" id="paymentForm">
+                            {% csrf_token %}
+                            <label class="payment-option mb-3" for="creditCard">
+                                <input class="form-check-input mt-2" type="radio" name="payment_method" id="creditCard" value="Credit Card" checked>
+                                <span class="payment-method-icon"><i class="fa-solid fa-credit-card text-primary"></i></span>
+                                <span>
+                                    <strong>Credit Card</strong>
+                                    <span class="d-block small text-muted">Visa and Mastercard accepted</span>
+                                </span>
+                            </label>
+
+                            <label class="payment-option mb-3" for="paypal">
+                                <input class="form-check-input mt-2" type="radio" name="payment_method" id="paypal" value="PayPal">
+                                <span class="payment-method-icon"><i class="fa-brands fa-paypal text-warning"></i></span>
+                                <span>
+                                    <strong>PayPal</strong>
+                                    <span class="d-block small text-muted">Fast online payment</span>
+                                </span>
+                            </label>
+
+                            <label class="payment-option mb-4" for="cod">
+                                <input class="form-check-input mt-2" type="radio" name="payment_method" id="cod" value="COD">
+                                <span class="payment-method-icon"><i class="fa-solid fa-money-bill-wave text-success"></i></span>
+                                <span>
+                                    <strong>Cash On Delivery</strong>
+                                    <span class="d-block small text-muted">Pay when your order arrives</span>
+                                </span>
+                            </label>
+
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                <label class="form-check-label small text-muted" for="agreeTerms">
+                                    I confirm my order and agree to the payment terms.
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-brand btn-lg w-100">
+                                <i class="fa-solid fa-lock me-2"></i>Confirm Payment
+                            </button>
+                            <a href="{% url 'cart' %}" class="btn btn-outline-brand w-100 mt-2">Back To Cart</a>
+                        </form>
+                    </div>
+
+                    <div class="summary-panel p-4">
+                        <h4 class="fw-bold mb-3">Billing Summary</h4>
+                        <div class="summary-row">
+                            <span class="text-white-50">Items MRP</span>
+                            <strong>&#8377;{{ original_total|floatformat:0 }}</strong>
+                        </div>
+                        <div class="summary-row text-success {% if total_discount <= 0 %}d-none{% endif %}">
+                            <span>Product Discount</span>
+                            <strong>-&#8377;{{ total_discount|floatformat:0 }}</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span class="text-white-50">Total Products</span>
+                            <strong>{{ request.session.cart_count|default:"0" }} items</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span class="text-white-50">Shipping</span>
+                            <strong>Free</strong>
+                        </div>
+                        <div class="summary-total d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">Total Payable</span>
+                            <strong class="fs-4" id="totalDisplay">&#8377;{{ order.total_amount|floatformat:0 }}</strong>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        {% else %}
+        <div class="content-card p-5 text-center">
+            <span class="icon-tile mx-auto mb-3"><i class="fa-solid fa-receipt"></i></span>
+            <h3 class="fw-bold">No order found</h3>
+            <p class="text-muted">Please complete checkout first.</p>
+            <a href="{% url 'cart' %}" class="btn btn-brand px-4">Go To Cart</a>
+        </div>
+        {% endif %}
+    </section>
+</main>
+
+<script>
+    const finalAmountInput = document.getElementById('finalAmountInput');
+
+    function calculateTotal() {
+        if (finalAmountInput) {
+            finalAmountInput.value = "{{ order.total_amount|default:0 }}";
+        }
+    }
+
+    document.querySelectorAll('input[name="payment_method"]').forEach(radio => {
+        radio.addEventListener('change', calculateTotal);
+    });
+
+    window.addEventListener('DOMContentLoaded', calculateTotal);
+
+    const form = document.getElementById('paymentForm');
+    if (form) {
+        form.addEventListener('submit', function() {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Processing...';
+        });
+    }
+</script>
+{% endblock %}

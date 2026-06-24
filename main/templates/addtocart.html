@@ -1,0 +1,375 @@
+{% extends 'base.html' %}
+
+{% block title %}Shopping Cart - ShopSphere{% endblock %}
+
+{% block extra_css %}
+<style>
+    .cart-thumb {
+        background: #eef2f7;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        height: 96px;
+        object-fit: contain;
+        padding: 10px;
+        width: 96px;
+    }
+
+    .cart-action {
+        align-items: center;
+        display: inline-flex;
+        height: 38px;
+        justify-content: center;
+        min-width: 38px;
+    }
+
+    .checkout-summary {
+        position: sticky;
+        top: 96px;
+    }
+
+    @media(max-width: 991px) {
+        .checkout-summary {
+            position: static;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="--hero-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070');">
+    <div class="container">
+        <span class="section-label text-white">Cart</span>
+        <h1 class="mt-3 mb-3">Shopping Cart</h1>
+        <p class="mb-0">Review your products, update quantities, and continue to a clean checkout.</p>
+    </div>
+</section>
+
+<main class="container py-5">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if cart_items %}
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="vstack gap-3">
+                {% for item in cart_items %}
+                <article class="content-card p-3" id="product{{ item.id }}">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <img src="{{ item.product.image.url }}" class="cart-thumb" alt="{{ item.product.name }}">
+                        </div>
+                        <div class="col">
+                            <h5 class="fw-bold mb-1">{{ item.product.name }}</h5>
+                            <div class="text-muted small mb-2">{{ item.product.category }}</div>
+                            {% if item.product.discount_percentage > 0 %}
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                <span class="text-muted text-decoration-line-through">&#8377;{{ item.product.price|floatformat:0 }}</span>
+                                <span class="fw-semibold text-success">&#8377;{{ item.product.discounted_price|floatformat:0 }}</span>
+                                <span class="badge text-bg-danger">{{ item.product.discount_percentage|floatformat:0 }}% OFF</span>
+                            </div>
+                            {% else %}
+                            <div class="fw-semibold">&#8377;{{ item.product.price|floatformat:0 }}</div>
+                            {% endif %}
+                            <div class="small {% if item.quantity > item.product.stock or item.product.stock == 0 %}text-danger{% else %}text-success{% endif %} fw-bold mt-1">
+                                {% if item.product.stock > 0 %}
+                                    {{ item.product.stock }} available
+                                {% else %}
+                                    Out of stock
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-auto">
+                            <div class="d-flex align-items-center gap-2">
+                                <button type="button"
+                                    class="btn btn-outline-brand cart-action btn-decrease"
+                                    data-cart-id="{{ item.id }}"
+                                    aria-label="Decrease quantity">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span class="fw-bold px-2" id="qty{{ item.id }}">{{ item.quantity }}</span>
+                                <button type="button"
+                                    class="btn btn-brand cart-action btn-increase"
+                                    data-cart-id="{{ item.id }}"
+                                    data-product-id="{{ item.product.id }}"
+                                    data-stock="{{ item.product.stock }}"
+                                    {% if item.quantity >= item.product.stock %}disabled{% endif %}
+                                    aria-label="Increase quantity">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                                <button type="button"
+                                    class="btn btn-outline-danger cart-action btn-delete"
+                                    data-cart-id="{{ item.id }}"
+                                    aria-label="Delete item">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-auto text-md-end">
+                            <div class="text-muted small">Subtotal</div>
+                            {% if item.product.discount_percentage > 0 %}
+                            <div class="small text-muted text-decoration-line-through">
+                                &#8377;<span class="original-subtotal" id="originalSubtotal{{ item.id }}">{{ item.original_subtotal|floatformat:0 }}</span>
+                            </div>
+                            <div class="small text-success">
+                                You save &#8377;<span class="discount-amount" id="discountAmount{{ item.id }}">{{ item.discount_amount|floatformat:0 }}</span>
+                            </div>
+                            {% else %}
+                            <span class="original-subtotal d-none" id="originalSubtotal{{ item.id }}">{{ item.original_subtotal|floatformat:0 }}</span>
+                            <span class="discount-amount d-none" id="discountAmount{{ item.id }}">0</span>
+                            {% endif %}
+                            <div class="fw-bold fs-5">&#8377;<span id="subtotal{{ item.id }}">{{ item.subtotal|floatformat:0 }}</span></div>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <aside class="content-card p-4 checkout-summary">
+                <h4 class="fw-bold mb-3">Order Summary</h4>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">Items MRP</span>
+                    <strong>&#8377;<span id="originalTotalAmount">{{ original_total|floatformat:0 }}</span></strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2 {% if total_discount <= 0 %}d-none{% endif %}" id="totalDiscountRow">
+                    <span class="text-muted">Product Discount</span>
+                    <strong class="text-success">-&#8377;<span id="totalDiscountAmount">{{ total_discount|floatformat:0 }}</span></strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">Items Total</span>
+                    <!-- FIX 1: Added id="itemsTotalCount" so JS can update it -->
+                    <strong id="itemsTotalCount">{{ request.session.cart_count|default:"0" }}</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="text-muted">Shipping</span>
+                    <strong class="text-success">Free</strong>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between fs-5 mb-4">
+                    <span class="fw-bold">Total</span>
+                    <strong class="text-success">&#8377;<span id="grandTotalAmount">{{ total|floatformat:0 }}</span></strong>
+                </div>
+                <button class="btn btn-brand btn-lg w-100"
+                    data-bs-toggle="modal"
+                    data-bs-target="#checkoutModal"
+                    {% for item in cart_items %}{% if item.quantity > item.product.stock or item.product.stock == 0 %}disabled{% endif %}{% endfor %}>
+                    Continue To Checkout
+                </button>
+                <a href="{% url 'product' %}" class="btn btn-outline-brand w-100 mt-2">Shop More</a>
+            </aside>
+        </div>
+    </div>
+    {% else %}
+    <div class="content-card text-center p-5">
+        <span class="icon-tile mx-auto mb-3"><i class="fa-solid fa-cart-shopping"></i></span>
+        <h3 class="fw-bold">Your cart is empty</h3>
+        <p class="text-muted">Add products to your cart and they will appear here.</p>
+        <a href="{% url 'product' %}" class="btn btn-brand px-4">Browse Products</a>
+    </div>
+    {% endif %}
+</main>
+
+<div class="modal fade" id="checkoutModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title fw-bold">Checkout Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form action="{% url 'checkout' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Full Name</label>
+                        <input type="text" name="name" class="form-control" value="{{ customer.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ customer.email }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Phone Number</label>
+                        <input type="text" name="phone" class="form-control" value="{{ customer.contact }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Address</label>
+                        <textarea name="address" class="form-control" rows="3" required>{{ customer.address }}</textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-brand" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-brand">Continue To Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // FIX 2: btn-increase — syncs + button disabled state, added .catch() for error handling
+    document.querySelectorAll('.btn-increase').forEach(button => {
+        button.addEventListener('click', function() {
+            const cartId = this.getAttribute('data-cart-id');
+            const productId = this.getAttribute('data-product-id');
+
+            fetch(`/addtocart/${productId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('qty' + cartId).innerText = data.quantity;
+                    document.getElementById('subtotal' + cartId).innerText = parseFloat(data.subtotal).toFixed(0);
+                    updateLineSavings(cartId, data);
+                    updateTotalAmount(data.global_cart_count);
+
+                    // FIX 2: Sync + button disabled state after increase
+                    const incBtn = document.querySelector(`.btn-increase[data-cart-id="${cartId}"]`);
+                    if (incBtn) incBtn.disabled = data.quantity >= data.stock;
+
+                } else if (data.error) {
+                    alert(data.error);
+                }
+            })
+            // FIX 3: Error handling on failed fetch
+            .catch(error => {
+                console.error('Cart error:', error);
+                alert('Something went wrong. Please refresh and try again.');
+            });
+        });
+    });
+
+    // FIX 2: btn-decrease — syncs + button disabled state, added .catch() for error handling
+    document.querySelectorAll('.btn-decrease').forEach(button => {
+        button.addEventListener('click', function() {
+            const cartId = this.getAttribute('data-cart-id');
+
+            fetch(`/remove_from_cart/${cartId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.deleted) {
+                        document.getElementById('product' + cartId).remove();
+                    } else {
+                        document.getElementById('qty' + cartId).innerText = data.quantity;
+                        document.getElementById('subtotal' + cartId).innerText = parseFloat(data.subtotal).toFixed(0);
+                        updateLineSavings(cartId, data);
+
+                        // FIX 2: Re-enable + button when quantity decreases below stock
+                        const incBtn = document.querySelector(`.btn-increase[data-cart-id="${cartId}"]`);
+                        if (incBtn) incBtn.disabled = data.quantity >= data.stock;
+                    }
+                    updateTotalAmount(data.global_cart_count);
+                }
+            })
+            // FIX 3: Error handling on failed fetch
+            .catch(error => {
+                console.error('Cart error:', error);
+                alert('Something went wrong. Please refresh and try again.');
+            });
+        });
+    });
+
+    document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', function() {
+            const cartId = this.getAttribute('data-cart-id');
+
+            fetch(`/delete_cart_item/${cartId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.deleted) {
+                    document.getElementById('product' + cartId).remove();
+                    updateTotalAmount(data.global_cart_count);
+                }
+            })
+            // FIX 3: Error handling on failed fetch
+            .catch(error => {
+                console.error('Cart error:', error);
+                alert('Something went wrong. Please refresh and try again.');
+            });
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function updateTotalAmount(cartCount) {
+        let total = 0;
+        let originalTotal = 0;
+        let discountTotal = 0;
+
+        document.querySelectorAll('[id^="subtotal"]').forEach(el => {
+            total += parseFloat(el.innerText) || 0;
+        });
+        document.querySelectorAll('.original-subtotal').forEach(el => {
+            originalTotal += parseFloat(el.innerText) || 0;
+        });
+        document.querySelectorAll('.discount-amount').forEach(el => {
+            discountTotal += parseFloat(el.innerText) || 0;
+        });
+
+        document.getElementById('originalTotalAmount').innerText = originalTotal.toFixed(0);
+        document.getElementById('totalDiscountAmount').innerText = discountTotal.toFixed(0);
+        document.getElementById('totalDiscountRow').classList.toggle('d-none', discountTotal <= 0);
+        document.getElementById('grandTotalAmount').innerText = total.toFixed(0);
+        document.getElementById('itemsTotalCount').innerText = cartCount;  // FIX 1
+
+        const badge = document.getElementById('globalCartBadge');
+        if (badge && cartCount !== undefined) badge.innerText = cartCount;
+
+        if (total === 0) window.location.reload();
+    }
+
+    function updateLineSavings(cartId, data) {
+        const originalSubtotal = document.getElementById('originalSubtotal' + cartId);
+        const discountAmount = document.getElementById('discountAmount' + cartId);
+
+        if (originalSubtotal && data.original_subtotal !== undefined) {
+            originalSubtotal.innerText = parseFloat(data.original_subtotal).toFixed(0);
+        }
+        if (discountAmount && data.discount_amount !== undefined) {
+            discountAmount.innerText = parseFloat(data.discount_amount).toFixed(0);
+        }
+    }
+</script>
+{% endblock %}

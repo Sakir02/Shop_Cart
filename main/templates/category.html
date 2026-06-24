@@ -1,0 +1,248 @@
+{% extends "admin-base.html" %}
+
+{% block title %}Admin Categories - ShopSphere{% endblock %}
+{% block admin_categories_active %}active{% endblock %}
+{% block page_label %}Category Management{% endblock %}
+
+{% block extra_css %}
+<style>
+    .category-card {
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .category-card::after {
+        background: #dbeafe;
+        border-radius: 8px;
+        content: "";
+        height: 84px;
+        opacity: 0.62;
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        transform: rotate(18deg);
+        width: 84px;
+    }
+
+    .category-card:hover {
+        border-color: rgba(37, 99, 235, 0.3);
+        box-shadow: 0 18px 36px rgba(15, 23, 42, 0.11);
+        transform: translateY(-4px);
+    }
+
+    .category-icon {
+        align-items: center;
+        background: #dbeafe;
+        border-radius: 8px;
+        color: var(--admin-brand);
+        display: inline-flex;
+        font-size: 22px;
+        height: 52px;
+        justify-content: center;
+        position: relative;
+        width: 52px;
+        z-index: 1;
+    }
+
+    .category-card h3,
+    .category-card p,
+    .category-card a,
+    .category-meta {
+        position: relative;
+        z-index: 1;
+    }
+
+    .category-card h3 {
+        font-size: 20px;
+    }
+
+    .category-meta {
+        color: var(--admin-muted);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .category-preview-link {
+        color: var(--admin-brand);
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    .category-preview-link:hover {
+        color: var(--admin-brand-dark);
+    }
+
+    .category-note {
+        background: #0f172a;
+        border-radius: 8px;
+        color: white;
+    }
+    @media (max-width: 575px) {
+        .category-card::after {
+            height: 64px;
+            right: -20px;
+            top: -20px;
+            width: 64px;
+        }
+
+        .category-icon {
+            font-size: 18px;
+            height: 40px;
+            width: 40px;
+        }
+
+        .category-card h3 {
+            font-size: 18px;
+        }
+
+        .category-note {
+             font-size: 14px;
+         }
+    }
+    @media (max-width: 400px) {
+        .category-card::after {
+            display: none;
+        }
+
+        .category-icon {
+            font-size: 16px;
+            height: 32px;
+            width: 32px;
+        }
+
+        .category-card h3 {
+            font-size: 16px;
+        }
+
+        .category-note {
+             font-size: 13px;
+         }
+            .category-note .col-lg-8 {
+                text-align: center;
+            }
+            .category-note .col-lg-4 {
+                text-align: center;
+            }
+            }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div>
+            <h1 class="fw-bold mb-1">Category Management</h1>
+            <p class="text-muted mb-0">Review the departments available for products in the store.</p>
+        </div>
+
+        <a href="/admin-home/" class="btn btn-admin">
+            <i class="fa-solid fa-plus me-2"></i>
+            Add Product
+        </a>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+            <div class="admin-card admin-stat">
+                <span class="admin-stat-icon"><i class="fa-solid fa-tags"></i></span>
+                <div>
+                    <div class="text-muted small fw-bold text-uppercase">Visible Categories</div>
+                    <div class="fs-3 fw-bold">{{ categories|length }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="admin-card admin-stat">
+                <span class="admin-stat-icon"><i class="fa-solid fa-box"></i></span>
+                <div>
+                    <div class="text-muted small fw-bold text-uppercase">Product Setup</div>
+                    <a href="/admin-home/" class="fw-bold text-decoration-none">Manage Products</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="admin-card admin-stat">
+                <span class="admin-stat-icon"><i class="fa-solid fa-store"></i></span>
+                <div>
+                    <div class="text-muted small fw-bold text-uppercase">Storefront</div>
+                    <a href="/product/" class="fw-bold text-decoration-none" target="_blank">View Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        {% for value, label in categories %}
+        {% if label != "Fashion" %}
+        <div class="col-xl-3 col-lg-4 col-md-6">
+            <article class="admin-card category-card h-100 p-4">
+                <span class="category-icon mb-3">
+                    {% if label == "Electronics" %}
+                    <i class="fa-solid fa-plug"></i>
+                    {% elif label == "Clothing" %}
+                    <i class="fa-solid fa-shirt"></i>
+                    {% elif label == "Shoes" %}
+                    <i class="fa-solid fa-shoe-prints"></i>
+                    {% elif label == "Mobiles" %}
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    {% elif label == "Laptops" %}
+                    <i class="fa-solid fa-laptop"></i>
+                    {% elif label == "Watches" %}
+                    <i class="fa-regular fa-clock"></i>
+                    {% elif label == "Beauty" %}
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    {% elif label == "Furniture" %}
+                    <i class="fa-solid fa-couch"></i>
+                    {% elif label == "Groceries" %}
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    {% elif label == "Sports" %}
+                    <i class="fa-solid fa-dumbbell"></i>
+                    {% elif label == "Books" %}
+                    <i class="fa-solid fa-book-open"></i>
+                    {% elif label == "Toys" %}
+                    <i class="fa-solid fa-gamepad"></i>
+                    {% elif label == "Kitchen" %}
+                    <i class="fa-solid fa-kitchen-set"></i>
+                    {% elif label == "Accessories" %}
+                    <i class="fa-solid fa-gem"></i>
+                    {% else %}
+                    <i class="fa-solid fa-layer-group"></i>
+                    {% endif %}
+                </span>
+
+                <div class="category-meta mb-2">Department</div>
+                <h3 class="fw-bold mb-2">{{ label }}</h3>
+                <p class="text-muted mb-4">
+                    Products added with this category appear under the {{ label }} filter.
+                </p>
+
+                <a href="/product/?category={{ value }}" class="category-preview-link" target="_blank">
+                    Preview products
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+                </a>
+            </article>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="category-note p-4 mt-4">
+        <div class="row g-3 align-items-center">
+            <div class="col-lg-8">
+                <h5 class="fw-bold mb-1">Categories are controlled from product choices.</h5>
+                <p class="text-light mb-0">
+                    To change the available list, update the product category choices in the model.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="/admin-home/" class="btn btn-light">
+                    Back To Products
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

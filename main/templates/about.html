@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}About - Veloza Mart{% endblock %}
+{% block about_active %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-hero {
+        --hero-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071');
+    }
+
+    .stat-number {
+        color: var(--brand);
+        font-size: 38px;
+        font-weight: 850;
+    }
+
+    .team-photo {
+        border-radius: 8px;
+        height: 180px;
+        object-fit: cover;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <section class="page-hero about-hero">
+        <div class="container">
+            <span class="section-label text-white">About Veloza Mart</span>
+            <h1 class="mt-3 mb-3">A Modern Ecommerce Experience</h1>
+            <p class="mb-0">
+                We build a cleaner way to discover products, compare options,
+                and shop with confidence.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="content-card p-4">
+                        <span class="icon-tile mb-3"><i class="fa-solid fa-building"></i></span>
+                        <h2 class="fw-bold">Who We Are</h2>
+                        <p class="text-muted">
+                            Veloza Mart is a modern ecommerce storefront focused on premium
+                            products, clear presentation, and a reliable customer journey.
+                        </p>
+                        <p class="text-muted mb-0">
+                            The platform combines simple management tools with a polished
+                            shopping interface for everyday buyers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="content-card p-4">
+                        <span class="icon-tile mb-3"><i class="fa-solid fa-bullseye"></i></span>
+                        <h2 class="fw-bold">Our Mission</h2>
+                        <p class="text-muted">
+                            Our mission is to make ecommerce feel trustworthy, fast, and
+                            professional from the first page view to product detail.
+                        </p>
+                        <p class="text-muted mb-0">
+                            We focus on strong design, clean product data, and simple
+                            workflows for both customers and admins.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3">
+                    <div class="content-card p-4">
+                        <div class="stat-number">10K+</div>
+                        <p class="text-muted mb-0">Happy Customers</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="content-card p-4">
+                        <div class="stat-number">500+</div>
+                        <p class="text-muted mb-0">Premium Products</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="content-card p-4">
+                        <div class="stat-number">24/7</div>
+                        <p class="text-muted mb-0">Customer Support</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="content-card p-4">
+                        <div class="stat-number">99%</div>
+                        <p class="text-muted mb-0">Positive Reviews</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-label">Team</span>
+                <h2 class="fw-bold mt-2">People Behind The Store</h2>
+                <p class="text-muted mb-0">A focused team building better product experiences.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="content-card p-3">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="team-photo" alt="John Smith">
+                        <div class="p-3">
+                            <h5 class="fw-bold mb-1">John Smith</h5>
+                            <p class="text-muted mb-0">CEO & Founder</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="content-card p-3">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="team-photo" alt="Sarah Johnson">
+                        <div class="p-3">
+                            <h5 class="fw-bold mb-1">Sarah Johnson</h5>
+                            <p class="text-muted mb-0">Creative Director</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="content-card p-3">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" class="team-photo" alt="David Miller">
+                        <div class="p-3">
+                            <h5 class="fw-bold mb-1">David Miller</h5>
+                            <p class="text-muted mb-0">Lead Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

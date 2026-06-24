@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --admin-bg: #eef2f7;
+            --admin-sidebar: #0f172a;
+            --admin-sidebar-soft: #1e293b;
+            --admin-text: #111827;
+            --admin-muted: #64748b;
+            --admin-line: #e5e7eb;
+            --admin-surface: #ffffff;
+            --admin-brand: #2563eb;
+            --admin-brand-dark: #1d4ed8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--admin-bg);
+            color: var(--admin-text);
+            font-family: Inter, Arial, sans-serif;
+            margin: 0;
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            background: var(--admin-sidebar);
+            color: white;
+            flex: 0 0 270px;
+            min-height: 100vh;
+            padding: 22px;
+            position: sticky;
+            top: 0;
+        }
+
+        .admin-brand {
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 12px;
+            padding-bottom: 22px;
+            text-decoration: none;
+        }
+
+        .admin-brand-icon {
+            align-items: center;
+            background: var(--admin-brand);
+            border-radius: 8px;
+            color: white;
+            display: inline-flex;
+            height: 42px;
+            justify-content: center;
+            width: 42px;
+        }
+
+        .admin-brand-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 850;
+            line-height: 1;
+        }
+
+        .admin-brand-subtitle {
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .admin-nav {
+            margin-top: 24px;
+        }
+
+        .admin-nav a {
+            align-items: center;
+            border-radius: 8px;
+            color: #cbd5e1;
+            display: flex;
+            font-weight: 700;
+            gap: 12px;
+            margin-bottom: 8px;
+            padding: 12px 14px;
+            text-decoration: none;
+        }
+
+        .admin-nav a.active,
+        .admin-nav a:hover {
+            background: var(--admin-sidebar-soft);
+            color: white;
+        }
+
+        .admin-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .admin-topbar {
+            align-items: center;
+            background: var(--admin-surface);
+            border-bottom: 1px solid var(--admin-line);
+            display: flex;
+            justify-content: space-between;
+            min-height: 74px;
+            padding: 16px 28px;
+        }
+
+        .admin-user {
+            align-items: center;
+            display: flex;
+            gap: 12px;
+        }
+
+        .admin-avatar {
+            align-items: center;
+            background: #dbeafe;
+            border-radius: 50%;
+            color: var(--admin-brand);
+            display: inline-flex;
+            font-weight: 850;
+            height: 40px;
+            justify-content: center;
+            text-transform: uppercase;
+            width: 40px;
+        }
+
+        .admin-content {
+            padding: 28px;
+        }
+
+        .admin-card {
+            background: var(--admin-surface);
+            border: 1px solid var(--admin-line);
+            border-radius: 8px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        .admin-stat {
+            align-items: center;
+            display: flex;
+            gap: 14px;
+            padding: 20px;
+        }
+
+        .admin-stat-icon {
+            align-items: center;
+            background: #dbeafe;
+            border-radius: 8px;
+            color: var(--admin-brand);
+            display: inline-flex;
+            font-size: 22px;
+            height: 52px;
+            justify-content: center;
+            width: 52px;
+        }
+
+        .btn-admin {
+            background: var(--admin-brand);
+            border-color: var(--admin-brand);
+            color: white;
+            font-weight: 700;
+        }
+
+        .btn-admin:hover {
+            background: var(--admin-brand-dark);
+            border-color: var(--admin-brand-dark);
+            color: white;
+        }
+
+        .btn-outline-admin {
+            border-color: var(--admin-line);
+            color: var(--admin-text);
+            font-weight: 700;
+        }
+
+        .btn-outline-admin:hover {
+            background: var(--admin-text);
+            border-color: var(--admin-text);
+            color: white;
+        }
+
+        .form-control,
+        .form-select {
+            border-color: var(--admin-line);
+            border-radius: 8px;
+            min-height: 48px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--admin-brand);
+            box-shadow: 0 0 0 0.18rem rgba(37, 99, 235, 0.16);
+        }
+
+        .table th {
+            color: var(--admin-muted);
+            font-size: 12px;
+            font-weight: 850;
+            text-transform: uppercase;
+        }
+
+        @media(max-width: 991px) {
+            .admin-layout {
+                display: block;
+            }
+
+            .admin-sidebar {
+                min-height: auto;
+                position: static;
+            }
+
+            .admin-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .admin-nav a {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <a href="/admin-home/" class="admin-brand">
+                <span class="admin-brand-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </span>
+                <span>
+                    <span class="admin-brand-title d-block">Admin Panel</span>
+                    <span class="admin-brand-subtitle">Veloza Mart Control</span>
+                </span>
+            </a>
+
+            <nav class="admin-nav">
+                <a href="/admin-dashboard/" class="{% block admin_dashboard_active %}{% endblock %}">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Dashboard
+                </a>
+                <a href="/admin-home/" class="{% block admin_products_active %}{% endblock %}">
+                    <i class="fa-solid fa-box"></i>
+                    Products
+                </a>
+                <a href="/admin-orders/" class="{% block admin_orders_active %}{% endblock %}">
+                    <i class="fa-solid fa-receipt"></i>
+                    Orders
+                </a>
+                <a href="/admin-category/" class="{% block admin_categories_active %}{% endblock %}">
+                    <i class="fa-solid fa-tags"></i>
+                    Categories
+                </a>
+                <a href="/admin-customers/" class="{% block admin_customers_active %}{% endblock %}">
+                    <i class="fa-solid fa-users"></i>
+                    Customers
+                </a>
+                <a href="/admin-contact/" class="{% block admin_contact_active %}{% endblock %}">
+                    <i class="fa-solid fa-envelope"></i> Contact Inquiries
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div>
+                    <div class="fw-bold">{% block page_label %}Dashboard{% endblock %}</div>
+                    <div class="text-muted small">Manage store content and customer data</div>
+                </div>
+
+                <div class="admin-user">
+                    <span class="admin-avatar">
+                        {{ request.session.user_name|default:"A"|first }}
+                    </span>
+                    <a href="/logout/" class="btn btn-outline-admin btn-sm">
+                        Logout
+                    </a>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

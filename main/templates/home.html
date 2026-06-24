@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block title %}Veloza Mart - Premium Ecommerce{% endblock %}
+{% block home_active %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+    .home-hero {
+        background: linear-gradient(135deg, #111827 0%, #0f766e 100%);
+        min-height: 560px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .hero-product-card {
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 8px;
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.24);
+        color: var(--ink);
+        padding: 22px;
+    }
+
+    .hero-product-image {
+        background: #f3f4f6;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        height: 330px;
+        object-fit: contain;
+        padding: 18px;
+        width: 100%;
+    }
+
+    .hero-product-label {
+        background: #ccfbf1;
+        border-radius: 8px;
+        color: var(--brand);
+        display: inline-flex;
+        font-size: 12px;
+        font-weight: 850;
+        padding: 6px 10px;
+        text-transform: uppercase;
+    }
+
+    .feature-card,
+    .product-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature-card:hover,
+    .product-card:hover {
+        border-color: rgba(15, 118, 110, 0.32);
+        box-shadow: 0 18px 36px rgba(15, 23, 42, 0.11);
+        transform: translateY(-4px);
+    }
+
+    .product-media {
+        background: #f3f4f6;
+        border-bottom: 1px solid var(--line);
+        display: block;
+        height: 220px;
+        padding: 18px;
+    }
+
+    .product-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .badge-category {
+        background: #ccfbf1;
+        border-radius: 8px;
+        color: #0f766e;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px 10px;
+    }
+
+    .product-title {
+        font-size: 17px;
+        font-weight: 800;
+        line-height: 1.3;
+        min-height: 44px;
+    }
+
+    .product-title a {
+        color: var(--ink);
+        text-decoration: none;
+    }
+
+    .product-title a:hover {
+        color: var(--brand);
+    }
+
+    .product-price {
+        color: var(--ink);
+        font-size: 20px;
+        font-weight: 850;
+    }
+
+    .stock-pill {
+        background: #eff6ff;
+        border-radius: 8px;
+        color: #1d4ed8;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px 10px;
+    }
+
+    .stock-pill.out {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .discount-badge {
+        background: #fee2e2;
+        border-radius: 8px;
+        color: #b91c1c;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px 10px;
+    }
+
+    .price-section {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .original-price {
+        text-decoration: line-through;
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+    .promo-band {
+        background: linear-gradient(90deg, #111827, #0f766e);
+        border-radius: 8px;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <section class="page-hero home-hero">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <span class="section-label text-white">Curated Marketplace</span>
+                    <h1 class="mt-3 mb-3">
+                        Elevate Your Shopping Experience
+                    </h1>
+                    <p class="mb-4">
+                        Discover premium products, fashion, electronics, and lifestyle
+                        essentials with a clean modern ecommerce experience.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="/product/" class="btn btn-brand btn-lg px-4">Shop Now</a>
+                        <a href="/contact/" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    {% if most_selling_product %}
+                    <article class="hero-product-card">
+                        <div class="d-flex gap-2 align-items-center">
+                            <span class="hero-product-label">Most Selling Product</span>
+                            {% if most_selling_product.discount_percentage > 0 %}
+                            <span class="discount-badge">{{ most_selling_product.discount_percentage|floatformat:0 }}% OFF</span>
+                            {% endif %}
+                        </div>
+                        <img src="{{ most_selling_product.image.url }}"
+                            class="hero-product-image my-3"
+                            alt="{{ most_selling_product.name }}">
+                        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
+                            <div>
+                                <h3 class="fw-bold mb-1">{{ most_selling_product.name }}</h3>
+                                <p class="text-muted mb-0">{{ most_selling_product.category }}</p>
+                            </div>
+                            <div class="text-end">
+                                {% if most_selling_product.discount_percentage > 0 %}
+                                    <div class="small original-price mb-1">₹{{ most_selling_product.price|floatformat:0 }}</div>
+                                    <div class="fs-4 fw-bold text-success">₹{{ most_selling_product.discounted_price|floatformat:0 }}</div>
+                                {% else %}
+                                    <div class="fs-4 fw-bold text-success">₹{{ most_selling_product.price|floatformat:0 }}</div>
+                                {% endif %}
+                                <a href="{% url 'product_detail' most_selling_product.id %}" class="btn btn-outline-brand btn-sm mt-2">
+                                    View Product
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-label">Why Veloza Mart</span>
+                <h2 class="fw-bold mt-2">Built For Confident Shopping</h2>
+                <p class="text-muted mb-0">A polished storefront with the basics customers expect.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="content-card feature-card p-4 text-center">
+                        <span class="icon-tile mb-3"><i class="fa-solid fa-truck-fast"></i></span>
+                        <h4 class="fw-bold">Fast Delivery</h4>
+                        <p class="text-muted mb-0">Quick dispatch and clear order updates for every purchase.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="content-card feature-card p-4 text-center">
+                        <span class="icon-tile mb-3"><i class="fa-solid fa-shield-halved"></i></span>
+                        <h4 class="fw-bold">Secure Payment</h4>
+                        <p class="text-muted mb-0">A safe, payment-ready experience for your customers.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="content-card feature-card p-4 text-center">
+                        <span class="icon-tile mb-3"><i class="fa-solid fa-headset"></i></span>
+                        <h4 class="fw-bold">Human Support</h4>
+                        <p class="text-muted mb-0">Simple support access whenever customers need help.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+                <div>
+                    <span class="section-label">Latest Collection</span>
+                    <h2 class="fw-bold mt-2 mb-0">Featured Products</h2>
+                    <p class="text-muted mb-0">Fresh products from your admin dashboard.</p>
+                </div>
+                <a href="/product/" class="btn btn-outline-brand px-4">View All</a>
+            </div>
+
+            {% if products %}
+            <div class="row g-4">
+                {% for i in products %}
+                <div class="col-xl-4 col-md-6">
+                    <article class="content-card product-card overflow-hidden">
+                        <a href="{% url 'product_detail' i.id %}" class="product-media">
+                            <img src="{{ i.image.url }}" alt="{{ i.name }}">
+                        </a>
+                        <div class="p-4">
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge-category">{{ i.category }}</span>
+                                {% if i.discount_percentage > 0 %}
+                                <span class="discount-badge">{{ i.discount_percentage|floatformat:0 }}% OFF</span>
+                                {% endif %}
+                            </div>
+                            <h3 class="product-title mt-3 mb-2">
+                                <a href="{% url 'product_detail' i.id %}">{{ i.name }}</a>
+                            </h3>
+                            <p class="text-muted small mb-3">{{ i.description|truncatewords:12 }}</p>
+                            <div class="d-flex justify-content-between align-items-center gap-3">
+                                <div class="price-section">
+                                    {% if i.discount_percentage > 0 %}
+                                        <span class="original-price">₹{{ i.price|floatformat:0 }}</span>
+                                        <span class="product-price">₹{{ i.discounted_price|floatformat:0 }}</span>
+                                    {% else %}
+                                        <span class="product-price">₹{{ i.price|floatformat:0 }}</span>
+                                    {% endif %}
+                                </div>
+                                <span class="stock-pill {% if i.stock == 0 %}out{% endif %}">
+                                    {% if i.stock > 0 %}{{ i.stock }} available{% else %}Out of stock{% endif %}
+                                </span>
+                                <a href="{% url 'product_detail' i.id %}"
+                                    class="btn {% if i.stock > 0 %}btn-outline-brand{% else %}btn-secondary disabled{% endif %} btn-sm"
+                                    {% if i.stock == 0 %}aria-disabled="true"{% endif %}>
+                                    {% if i.stock > 0 %}View{% else %}Unavailable{% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="content-card p-5 text-center">
+                <i class="fa-solid fa-box-open text-success fs-1 mb-3"></i>
+                <h4 class="fw-bold">No products added yet</h4>
+                <p class="text-muted mb-0">Add products from the admin page and they will appear here automatically.</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="promo-band p-5 text-center">
+                <span class="section-label text-white">Seasonal Picks</span>
+                <h2 class="fw-bold mt-2 mb-3">Premium Products, Better Presentation</h2>
+                <p class="mb-4 text-light">Give customers a storefront that feels clear, trusted, and ready to shop.</p>
+                <a href="/product/" class="btn btn-light btn-lg px-4">Explore Products</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
